@@ -4,6 +4,8 @@ const toastLiveExample = document.getElementById('liveToast')
 const productos = [];
 const carrito = [];
 
+
+
 function getAllUsers(){
     $.ajax({
         method: "GET",
@@ -87,12 +89,20 @@ function getFilteredByKey(array, key, value) {
     });
   }
 
+  function cotizar(){
+        if(localStorage.getItem("sesion") !== 'activa'){
+            alert("Porfavor inicia sesion para continuar");
+            return;
+        }
+      window.location.href = 'http://localhost:63342/aplicacion-cotizacion-productos/static/mensajeriaWpp.html'
+  }
 
   function llenarCarrito(){
     let body = document.querySelector("#dataTable");
     let items = `
                 <thead>
                     <tr>
+                      <th>Imagen</th>
                       <th>Producto</th>
                       <th>Valor(c/a)</th>
                       <th>Valor Total</th>
@@ -101,10 +111,9 @@ function getFilteredByKey(array, key, value) {
                 </thead>
                 <tbody>`;
       carrito.forEach( carritoKey =>{
-          // console.log(carritoKey);
-          // dataTable
           items += `
                 <tr>
+                    <td><img width="90px" src="img/imgGorro.jpeg" alt="nothing"></td>
                     <td>${carritoKey.nombre}</td>
                     <td>${carritoKey.precio}</td>
                     <td>${carritoKey.precio}</td>
@@ -119,6 +128,8 @@ function getFilteredByKey(array, key, value) {
       items+= "</tbody>"
       body.innerHTML = items;
   }
+
+
 
 
   function sumar(id){

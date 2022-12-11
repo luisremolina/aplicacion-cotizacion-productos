@@ -9,7 +9,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/usuarios")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+
+@CrossOrigin(origins = "*", allowedHeaders = "*",methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class UsuarioController {
 
     private IUsuarioService iUsuarioService;
@@ -26,6 +27,11 @@ public class UsuarioController {
     @GetMapping
     public List<UsuarioRegistroDTO> getAll() {
         return iUsuarioService.getALl();
+    }
+
+    @PostMapping("/login")
+    public UsuarioRegistroDTO getByEmailAndPassowrd(@RequestBody UsuarioRegistroDTO usuarioRegistroDTO){
+        return iUsuarioService.login(usuarioRegistroDTO.getEmail(), usuarioRegistroDTO.getPassword());
     }
 
     @PutMapping()

@@ -2,7 +2,6 @@ package com.cotizacion.aplicacioncotizacionproductos.service.impl;
 
 import com.cotizacion.aplicacioncotizacionproductos.converter.UsuarioConverter;
 import com.cotizacion.aplicacioncotizacionproductos.dto.UsuarioRegistroDTO;
-import com.cotizacion.aplicacioncotizacionproductos.model.Rol;
 import com.cotizacion.aplicacioncotizacionproductos.model.Usuario;
 import com.cotizacion.aplicacioncotizacionproductos.repository.UsuarioRepository;
 import com.cotizacion.aplicacioncotizacionproductos.service.IUsuarioService;
@@ -38,6 +37,16 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Override
     public void deleteById(Long id) {
         usuarioRepository.deleteById(id);
+    }
+
+    @Override
+    public UsuarioRegistroDTO login(String email, String password) {
+
+        Usuario usuario = usuarioRepository.getByEmailAndPassword(email,password);
+        if (usuario != null){
+            return usuarioConverter.modelToDto(usuario);
+        }
+        return null;
     }
 
 

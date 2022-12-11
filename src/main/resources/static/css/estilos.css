@@ -83,3 +83,13 @@ body {
     margin-left: 70px;
     margin-bottom: 40px;
 }
+
+.imagenLogo{
+    max-width: 400px;
+    margin-left: 35%;
+    margin-top: 10%;
+}
+
+.ocular{
+    display: none !important;
+}

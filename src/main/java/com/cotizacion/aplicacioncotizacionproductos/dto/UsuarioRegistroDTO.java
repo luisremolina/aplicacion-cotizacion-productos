@@ -25,7 +25,13 @@ public class UsuarioRegistroDTO {
         this.rol = rol;
     }
 
+    public UsuarioRegistroDTO(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     public UsuarioRegistroDTO(String email) {
         this.email = email;
     }
+
 }
