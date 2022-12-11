@@ -38,7 +38,7 @@ function cargarProductos(){
            `
          <div class="col">
             <div class="card card${d.id} h-100">
-                <img src="img/imgGorro.jpeg" class="card-img-top" alt="...">
+                <img src="${d.img}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${d.nombre}</h5>
                     <p class="card-text">${d.precio}</p>
