@@ -118,9 +118,7 @@ function getFilteredByKey(array, key, value) {
                     <td>${carritoKey.precio}</td>
                     <td>${carritoKey.precio}</td>
                     <td class="d-flex">
-                         <button type="button" onclick="restar('${carritoKey.id}')" class="btnCart mr-2"> - </button>
                          <h5>${carritoKey.cantidad}</h5>
-                         <button type="button" onclick="sumar('${carritoKey.id}')" class="btnCart ml-2"> + </button>
                     </td>
                 </tr>
           `;
