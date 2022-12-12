@@ -94,7 +94,38 @@ function getFilteredByKey(array, key, value) {
             alert("Porfavor inicia sesion para continuar");
             return;
         }
-      window.location.href = 'http://localhost:63342/aplicacion-cotizacion-productos/static/mensajeriaWpp.html'
+        // GENERAR EL PDF
+
+      // const documentoPdf = document.getElementById("exampleModal");
+      const documentoPdf = document.body;
+
+        html2pdf().set({
+            margin: 1,
+            filename: 'cotizacion.pdf',
+            image: {
+                type: 'jpeg',
+                quality: 0.98
+            },
+            html2canvas:{
+                scale: 3,
+                letterRendering: true
+            },
+            jsPDF: {
+                unit: "in",
+                format: "a3",
+                orientation: "portrait" // lnadscape o portrair
+            }
+        })
+            .from(documentoPdf)
+            .save()
+            .catch(err => console.log(err))
+            .finally()
+            .then( () =>{
+                console.log("guardado");
+                window.location.href = 'http://localhost:63342/aplicacion-cotizacion-productos/static/mensajeriaWpp.html'
+            });
+
+
   }
 
   function llenarCarrito(){
